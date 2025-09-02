@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^24.3.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start:node": "npm run build && node dist/index.js",
+    "start:bun": "bun run src/index.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "fastify": "^5.5.0"
+  }
+}
