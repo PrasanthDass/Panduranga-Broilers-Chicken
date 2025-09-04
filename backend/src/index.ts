@@ -1,15 +1,15 @@
-import fastify from "fastify";
+import Fastify from "fastify";
 
-const server = fastify();
+const fastify = Fastify({ logger: true });
 
-server.get("/", async () => {
-    return "Hello from Fastify with Bun + TypeScript!";
+fastify.get("/", async (request, reply) => {
+  return { hello: "world" };
 });
 
-server.listen({ port: 3000 }, (err, address) => {
-    if (err) {
-        console.error(err);
-        process.exit(1);
-    }
-    console.log(`Server listening at ${address}`);
-});
+try {
+  await fastify.listen({ port: 3000 });
+  console.log("Server is running on http://localhost:3000");
+} catch (err) {
+  fastify.log.error(err);
+  process.exit(1);
+}
