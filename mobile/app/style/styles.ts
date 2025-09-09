@@ -1,0 +1,73 @@
+import { StyleSheet } from "react-native";
+export const styles = StyleSheet.create({
+  input: {
+    height: 50,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 10,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: "80%",
+  },
+  label: {
+    fontSize: 12,
+    textAlign: "left",
+    alignSelf: "flex-start",
+    marginLeft: "10%",
+    fontWeight: "300",
+    userSelect: "none",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+    alignSelf: "center",
+  },
+  form: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 5,
+  },
+  container: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  pressable_text: {
+    fontSize: 18,
+    color: "white",
+  },
+  text: {
+    fontSize: 18,
+    marginVertical: 20,
+    fontWeight: "300",
+    padding: 10,
+  },
+  pressable: {
+    backgroundColor: "purple",
+    opacity: 0.75,
+    padding: 10,
+    borderRadius: 10,
+    width: "80%",
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    fontWeight: "200",
+    cursor: "pointer",
+    userSelect: "none",
+    elevation: 10,
+  },
+  focus: {
+    opacity: 0.6,
+    transform: [{ scale: 0.98 }],
+    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
+    elevation: 5,
+    transitionDuration: "100ms",
+  },
+});
