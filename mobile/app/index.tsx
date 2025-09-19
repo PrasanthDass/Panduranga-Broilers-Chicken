@@ -1,26 +1,38 @@
-import { styles } from "@/app/style/styles";
 import { router } from "expo-router";
 import { Pressable, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
-  let routes = [
+  const routes = [
     { name: "Login", path: "/screens/auth/login" },
     { name: "Admin Home", path: "/screens/admin/home" },
     { name: "Customer Home", path: "/screens/customer/home" },
   ];
+
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 20,
+      }}
     >
-      <Text>Home Page</Text>
+      <Text style={{ fontSize: 24, marginBottom: 20 }}>Home Page</Text>
       {routes.map((route) => (
         <Pressable
           key={route.path}
-          style={({ pressed }) => [styles.pressable, pressed && styles.focus]}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? "#ccc" : "#007AFF",
+              padding: 10,
+              borderRadius: 5,
+              width: "80%",
+            },
+          ]}
           onPress={() => router.push(route.path)}
         >
-          <Text style={styles.pressable_text}>{route.name}</Text>
+          <Text style={{ color: "white", fontSize: 18 }}>{route.name}</Text>
         </Pressable>
       ))}
     </SafeAreaView>

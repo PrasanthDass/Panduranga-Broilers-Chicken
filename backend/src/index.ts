@@ -1,15 +1,29 @@
-import Fastify from "fastify";
+import type { Request, Response } from "express";
+import express from "express";
+import healthRoutes from "./routes/health.routes";
+import usersRoutes from "./routes/users.routes";
+import authRoutes from "./routes/auth.routes";
+import exampleRoutes from "./routes/example.routes";
+import adminRoutes from "./routes/admin.routes";
+import dotenv from "dotenv";
 
-const fastify = Fastify({ logger: true });
+// configure env
+dotenv.config();
 
-fastify.get("/", async (request, reply) => {
-  return { hello: "world" };
+const app = express();
+
+app.listen(3000, () => {
+  console.log("listening on port 3000");
 });
 
-try {
-  await fastify.listen({ port: 3000 });
-  console.log("Server is running on http://localhost:3000");
-} catch (err) {
-  fastify.log.error(err);
-  process.exit(1);
-}
+app.get("/", (req: Request, res: Response) => {
+  res.json({
+    company: "Panduranga-Broilers-Chicken",
+  });
+});
+
+app.use("/", healthRoutes);
+app.use("/", usersRoutes);
+app.use("/", authRoutes);
+app.use("/example", exampleRoutes);
+app.use("/admin", adminRoutes);
