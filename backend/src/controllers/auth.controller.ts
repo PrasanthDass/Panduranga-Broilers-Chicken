@@ -56,6 +56,8 @@ export async function loginUser(
 ): Promise<Response> {
   const { mobile_number, password } = req.body;
 
+  console.log(mobile_number, password);
+
   if (!mobile_number || !password) {
     return res
       .status(400)
@@ -69,6 +71,8 @@ export async function loginUser(
       .select("*")
       .eq("mobile_number", mobile_number)
       .single();
+
+    console.log(user);
 
     if (error || !user) {
       return res.status(401).json({ error: "Invalid credentials" });
