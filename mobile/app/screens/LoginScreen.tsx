@@ -11,7 +11,7 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const backend_url = "http://192.168.1.9:3000";
+  const backend_url = "http://10.206.79.172:3000";
 
   const onLogin = async () => {
     if (!mobileNumber || !password) {

@@ -42,35 +42,37 @@ export default function Layout() {
   };
 
   const logout = async () => {
-    setUser(null);
+    const refreshToken = await AsyncStorage.getItem("refreshToken");
+    if (refreshToken) {
+      try {
+        await fetch("http://10.206.79.172:3000/logout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refreshToken }),
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     await AsyncStorage.removeItem("userRole");
+    await AsyncStorage.removeItem("accessToken");
+    await AsyncStorage.removeItem("refreshToken");
+    setUser(null);
   };
 
   if (loading) return null;
 
-  let initialRouteName = "Login";
-  if (user)
-    initialRouteName =
-      user.role === "admin" ? "AdminDashboard" : "CustomerHome";
-
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
-      <Stack.Navigator initialRouteName={initialRouteName}>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="AdminDashboard"
-          component={AdminDashboard}
-          options={{ title: "Admin Dashboard" }}
-        />
-        <Stack.Screen
-          name="CustomerHome"
-          component={CustomerHome}
-          options={{ title: "Customer Home" }}
-        />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!user ? (
+          <Stack.Screen name="Login" component={LoginScreen} />
+        ) : user.role === "admin" ? (
+          <Stack.Screen name="AdminDashboard" component={AdminDashboard} />
+        ) : (
+          <Stack.Screen name="CustomerHome" component={CustomerHome} />
+        )}
       </Stack.Navigator>
     </AuthContext.Provider>
   );

@@ -47,51 +47,54 @@ export default function AdminDashboard() {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Weekly Sales</Text>
-      {weeklySales.length > 0 ? (
-        <BarChart
-          data={chartData}
-          width={screenWidth - 32}
-          height={220}
-          yAxisLabel="₹"
-          chartConfig={{
-            backgroundColor: "#1e2923",
-            backgroundGradientFrom: "#08130D",
-            backgroundGradientTo: "#1c2a12",
-            decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-            labelColor: () => "#fff",
-            style: { borderRadius: 16 },
-          }}
-          style={{ marginVertical: 8, borderRadius: 16 }}
-          yAxisSuffix={"Sales"}
-        />
-      ) : (
-        <Text>No sales data available</Text>
+    <FlatList
+      style={styles.container}
+      data={transactions}
+      keyExtractor={(item) => item.id.toString()}
+      ListHeaderComponent={
+        <>
+          <Text style={styles.title}>Weekly Sales</Text>
+          {weeklySales.length > 0 ? (
+            <BarChart
+              data={chartData}
+              width={screenWidth - 32}
+              height={220}
+              yAxisLabel="₹"
+              chartConfig={{
+                backgroundColor: "#1e2923",
+                backgroundGradientFrom: "#08130D",
+                backgroundGradientTo: "#1c2a12",
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                labelColor: () => "#fff",
+                style: { borderRadius: 16 },
+              }}
+              style={{ marginVertical: 8, borderRadius: 16 }}
+              yAxisSuffix={"Sales"}
+            />
+          ) : (
+            <Text>No sales data available</Text>
+          )}
+          <Text style={styles.title}>Last 10 Transactions</Text>
+        </>
+      }
+      renderItem={({ item }) => (
+        <View style={styles.transactionItem}>
+          <Text>Bill ID: {item.id}</Text>
+          <Text>Customer ID: {item.customer_id}</Text>
+          <Text>Amount: ₹{item.amount.toFixed(2)}</Text>
+          <Text>Status: {item.status}</Text>
+          <Text>
+            Due Date: {new Date(item.due_date).toLocaleDateString()}
+          </Text>
+        </View>
       )}
-
-      <Text style={styles.title}>Last 10 Transactions</Text>
-      <FlatList
-        data={transactions}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.transactionItem}>
-            <Text>Bill ID: {item.id}</Text>
-            <Text>Customer ID: {item.customer_id}</Text>
-            <Text>Amount: ₹{item.amount.toFixed(2)}</Text>
-            <Text>Status: {item.status}</Text>
-            <Text>
-              Due Date: {new Date(item.due_date).toLocaleDateString()}
-            </Text>
-          </View>
-        )}
-      />
-
-      <Text style={styles.logout} onPress={logout}>
-        Logout
-      </Text>
-    </ScrollView>
+      ListFooterComponent={
+        <Text style={styles.logout} onPress={logout}>
+          Logout
+        </Text>
+      }
+    />
   );
 }
 

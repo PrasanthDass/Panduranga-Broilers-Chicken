@@ -2,7 +2,7 @@ import type { Response } from "express";
 import express from "express";
 import healthRoutes from "./routes/health.routes";
 import usersRoutes from "./routes/users.routes";
-import authRoutes from "./routes/auth.routes";
+import guthRoutes from "./routes/auth.routes";
 import exampleRoutes from "./routes/example.routes";
 import adminRoutes from "./routes/admin.routes";
 import cors from "cors";
