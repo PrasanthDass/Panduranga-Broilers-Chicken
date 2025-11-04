@@ -2,7 +2,7 @@ import type { Response } from "express";
 import express from "express";
 import healthRoutes from "./routes/health.routes";
 import usersRoutes from "./routes/users.routes";
-import guthRoutes from "./routes/auth.routes";
+import authRoutes from "./routes/auth.routes";
 import exampleRoutes from "./routes/example.routes";
 import adminRoutes from "./routes/admin.routes";
 import cors from "cors";
@@ -15,6 +15,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(morgan("dev"));
+app.use(morgan("combined"));
 app.use(express.json());
 
 app.listen(3000, () => {

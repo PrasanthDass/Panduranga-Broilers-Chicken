@@ -1,3 +1,5 @@
-import { useAuth } from "./_layout";
+import { Redirect } from "expo-router";
 
-export default useAuth;
+export default function Index() {
+  return <Redirect href="/(auth)/LoginScreen" />;
+}
