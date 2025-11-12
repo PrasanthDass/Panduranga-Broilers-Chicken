@@ -18,6 +18,9 @@ export default function AdminDashboard() {
   const { sales, transactions, isLoading, error } = useAdminDashboard();
 
   const manage_user_path = "/(admin)/ManageUsers" as RelativePathString;
+  const create_bill_path = "/(admin)/CreateBill" as RelativePathString;
+  const reports_path = "/(admin)/Reports" as RelativePathString;
+  const customers_path = "/(admin)/Customers" as RelativePathString;
 
   const renderContent = () => {
     if (isLoading) {
@@ -48,11 +51,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={{ paddingBottom: 40 }}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.title}>Dashboard</Text>
 
       {renderContent()}
@@ -67,6 +66,24 @@ export default function AdminDashboard() {
           </TouchableOpacity>
         </Link>
 
+        <Link href={create_bill_path} asChild>
+          <TouchableOpacity style={styles.linkCard} activeOpacity={0.8}>
+            <Text style={styles.linkText}>Create New Bill</Text>
+            <Text style={styles.arrow}>›</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href={reports_path} asChild>
+          <TouchableOpacity style={styles.linkCard}>
+            <Text style={styles.linkText}>View Reports</Text>
+            <Text style={styles.arrow}>›</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href={customers_path} asChild>
+          <TouchableOpacity style={styles.linkCard} activeOpacity={0.8}>
+            <Text style={styles.linkText}>View All Customers</Text>
+            <Text style={styles.arrow}>›</Text>
+          </TouchableOpacity>
+        </Link>
         <TouchableOpacity onPress={logout} style={styles.logoutBtn}>
           <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>
@@ -78,21 +95,21 @@ export default function AdminDashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 18,
-    paddingTop: 25,
+    paddingHorizontal: 25,
+    paddingVertical: 12,
     backgroundColor: "#f2f2f7",
   },
   title: {
-    fontSize: 32,
-    fontWeight: "700",
+    fontSize: 22,
+    fontWeight: "600",
     color: "#111",
-    marginBottom: 20,
+    marginBottom: 12,
   },
   statsContainer: {
-    marginBottom: 32,
+    marginBottom: 12,
   },
   loader: {
-    marginTop: 60,
+    marginTop: 12,
   },
   error: {
     color: "#ff3b30",
@@ -101,10 +118,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   section: {
-    marginTop: 20,
+    marginTop: 10,
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 12,
     fontWeight: "600",
     color: "#111",
     marginBottom: 12,
@@ -138,11 +155,8 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderRadius: 14,
     marginTop: 12,
+    marginBottom: 20,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
   },
   logoutText: {
     fontSize: 17,

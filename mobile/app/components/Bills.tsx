@@ -25,7 +25,7 @@ const TransactionItem = ({ item }: { item: Bill }) => (
 );
 
 export const BillList = ({ transactions }: Props) => (
-  <View style={styles.listContainer}>
+  <View>
     <Text style={styles.title}>Last 10 Transactions</Text>
     {transactions.length > 0 ? (
       <FlatList
@@ -43,9 +43,6 @@ export const BillList = ({ transactions }: Props) => (
 export default BillList;
 
 const styles = StyleSheet.create({
-  listContainer: {
-    marginTop: 24,
-  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
@@ -57,10 +54,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     marginVertical: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
     elevation: 3,
   },
   cardHeader: {

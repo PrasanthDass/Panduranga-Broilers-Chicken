@@ -6,6 +6,10 @@ import {
   deleteUser,
   getWeeklySales,
   getLastTransactions,
+  createCustomer,
+  getCustomers,
+  createBill,
+  getBillsReport,
 } from "../controllers/admin.controller";
 import { verifyToken } from "../middleware/auth.middleware";
 import { authorizeRoles } from "../middleware/role.middleware";
@@ -16,6 +20,10 @@ router.get("/users", verifyToken, authorizeRoles("admin"), listUsers);
 router.post("/users", verifyToken, authorizeRoles("admin"), createUser);
 router.put("/users/:id", verifyToken, authorizeRoles("admin"), updateUser);
 router.delete("/users/:id", verifyToken, authorizeRoles("admin"), deleteUser);
+
+router.post("/customer", verifyToken, authorizeRoles("admin"), createCustomer);
+router.get("/customers", verifyToken, authorizeRoles("admin"), getCustomers);
+
 router.get(
   "/weekly-sales",
   verifyToken,
@@ -27,6 +35,15 @@ router.get(
   verifyToken,
   authorizeRoles("admin"),
   getLastTransactions,
+);
+
+router.post("/bills", verifyToken, authorizeRoles("admin"), createBill);
+
+router.get(
+  "/reports/bills",
+  verifyToken,
+  authorizeRoles("admin"),
+  getBillsReport,
 );
 
 export default router;

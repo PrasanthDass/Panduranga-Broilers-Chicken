@@ -1,7 +1,8 @@
 import { useAuth } from "@/context/AuthContext";
 import { Stack, router } from "expo-router";
 import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, Text, StyleSheet, View } from "react-native";
+import { LogOut } from "lucide-react-native";
 
 const LogoutButton = () => {
   const { logout } = useAuth();
@@ -11,11 +12,19 @@ const LogoutButton = () => {
         logout();
         router.replace("/(auth)/LoginScreen");
       }}
+      style={{
+        marginRight: 10,
+      }}
     >
-      <Text style={styles.logoutText}>Logout</Text>
+      <LogOut color={"#FF3B30"} />
     </Pressable>
   );
 };
+const LeftButton = ({ name }: { name: string }) => (
+  <View>
+    <Text>{name}</Text>
+  </View>
+);
 
 export default function AdminLayout() {
   return (
@@ -23,12 +32,10 @@ export default function AdminLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerShown: true,
           title: "Admin",
           headerRight: () => <LogoutButton />,
           headerShadowVisible: false,
           headerStyle: { backgroundColor: "#f9f9f9" },
-          headerTitleStyle: { fontSize: 18 },
         }}
       />
       <Stack.Screen
@@ -39,14 +46,32 @@ export default function AdminLayout() {
           headerBackTitle: "Back",
         }}
       />
+      <Stack.Screen
+        name="CreateBill"
+        options={{
+          title: "Create New Bill",
+          headerShown: true,
+          headerBackTitle: "Back",
+        }}
+      />
+      <Stack.Screen
+        name="Reports"
+        options={{
+          title: "Sales Reports",
+          headerShown: true,
+          headerBackTitle: "Back",
+        }}
+      />
+      <Stack.Screen
+        name="Customers"
+        options={{
+          title: "All Customers",
+          headerShown: true,
+          headerBackTitle: "Back",
+          headerStyle: { backgroundColor: "#f2f2f7" },
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   );
 }
-
-const styles = StyleSheet.create({
-  logoutText: {
-    color: "red",
-    fontSize: 16,
-    marginRight: 10,
-  },
-});
