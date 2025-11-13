@@ -11,6 +11,11 @@
     },
     "ios": {
       "bundleIdentifier": "com.asw4th.pandurangabroilerschicken"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6b47e9e4-5ed2-4ca9-a076-9b308b5b85da"
+      }
     }
   }
 }
