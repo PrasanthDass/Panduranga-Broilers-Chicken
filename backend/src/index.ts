@@ -1,4 +1,4 @@
-import type { Response } from "express";
+import type { Request, Response } from "express";
 import express from "express";
 import healthRoutes from "./routes/health.routes.js";
 import usersRoutes from "./routes/users.routes.js";
@@ -10,22 +10,20 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 
-// configure env
 dotenv.config();
-
+const port = process.env.PORT;
 const app = express();
 app.use(cors());
 app.use(morgan("dev"));
 app.use(morgan("combined"));
 app.use(express.json());
 
-app.listen(3000, () => {
-  console.log("listening on port 3000");
-});
+app.listen(port, () => {});
 
-app.get("/", (res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.json({
-    company: "Panduranga-Broilers-Chicken",
+    status: "OK",
+    message: "Dont try to play the fool with mr Niggesh !",
   });
 });
 
