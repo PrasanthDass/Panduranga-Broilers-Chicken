@@ -3,6 +3,14 @@
     "name": "Panduranga Broilers Chicken",
     "slug": "panduranga-broilers-chicken",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.asw4th.pandurangabroilerschicken"
+    },
+    "ios": {
+      "bundleIdentifier": "com.asw4th.pandurangabroilerschicken"
+    }
   }
 }
