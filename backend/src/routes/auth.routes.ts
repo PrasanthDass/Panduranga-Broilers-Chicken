@@ -5,9 +5,9 @@ import {
   refreshToken,
   logoutUser,
   changePassword,
-} from "../controllers/auth.controller";
-import { loginRateLimiter } from "../middleware/rateLimit.middleware";
-import { verifyToken } from "../middleware/auth.middleware";
+} from "../controllers/auth.controller.js";
+import { loginRateLimiter } from "../middleware/rateLimit.middleware.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
 
 const router = Router();
 

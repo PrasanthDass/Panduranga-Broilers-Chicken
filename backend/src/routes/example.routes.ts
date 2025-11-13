@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { verifyToken } from "../middleware/auth.middleware";
-import { authorizeRoles } from "../middleware/role.middleware";
+import { verifyToken } from "../middleware/auth.middleware.js";
+import { authorizeRoles } from "../middleware/role.middleware.js";
 import type { Request, Response } from "express";
 
 const router = Router();

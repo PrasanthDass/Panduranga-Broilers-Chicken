@@ -1,5 +1,5 @@
 import type { Response, NextFunction } from "express";
-import type { AuthRequest } from "./auth.middleware";
+import type { AuthRequest } from "./auth.middleware.js";
 
 export function authorizeRoles(allowedRoles: string | string[]) {
   const rolesArray = Array.isArray(allowedRoles)

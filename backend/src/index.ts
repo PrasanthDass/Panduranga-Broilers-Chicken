@@ -1,11 +1,11 @@
 import type { Response } from "express";
 import express from "express";
-import healthRoutes from "./routes/health.routes";
-import usersRoutes from "./routes/users.routes";
-import authRoutes from "./routes/auth.routes";
-import exampleRoutes from "./routes/example.routes";
-import adminRoutes from "./routes/admin.routes";
-import customerRoutes from "./routes/customer.routes";
+import healthRoutes from "./routes/health.routes.js";
+import usersRoutes from "./routes/users.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import exampleRoutes from "./routes/example.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
+import customerRoutes from "./routes/customer.routes.js";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";

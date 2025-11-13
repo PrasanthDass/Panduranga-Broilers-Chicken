@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { getMyDetails, getMyBills } from "../controllers/customer.controller";
-import { verifyToken } from "../middleware/auth.middleware";
-import { authorizeRoles } from "../middleware/role.middleware";
+import {
+  getMyDetails,
+  getMyBills,
+} from "../controllers/customer.controller.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
+import { authorizeRoles } from "../middleware/role.middleware.js";
 
 const router = Router();
 

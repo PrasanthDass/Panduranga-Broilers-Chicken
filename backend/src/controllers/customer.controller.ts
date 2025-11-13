@@ -1,6 +1,6 @@
 import type { Response } from "express";
-import { supabase } from "../config/database";
-import type { AuthRequest } from "../middleware/auth.middleware";
+import { supabase } from "../config/database.js";
+import type { AuthRequest } from "../middleware/auth.middleware.js";
 
 export async function getMyDetails(
   req: AuthRequest,

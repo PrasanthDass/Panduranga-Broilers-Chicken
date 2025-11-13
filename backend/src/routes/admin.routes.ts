@@ -10,9 +10,9 @@ import {
   getCustomers,
   createBill,
   getBillsReport,
-} from "../controllers/admin.controller";
-import { verifyToken } from "../middleware/auth.middleware";
-import { authorizeRoles } from "../middleware/role.middleware";
+} from "../controllers/admin.controller.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
+import { authorizeRoles } from "../middleware/role.middleware.js";
 
 const router = Router();
 

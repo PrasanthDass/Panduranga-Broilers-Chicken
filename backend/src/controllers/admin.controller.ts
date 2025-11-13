@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { supabase } from "../config/database";
+import { supabase } from "../config/database.js";
 import bcrypt from "bcryptjs";
-import type { AuthRequest } from "../middleware/auth.middleware";
+import type { AuthRequest } from "../middleware/auth.middleware.js";
 
 export async function listUsers(
   req: Request,

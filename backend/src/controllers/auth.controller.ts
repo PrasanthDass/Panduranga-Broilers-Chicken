@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import { supabase } from "../config/database";
+import { supabase } from "../config/database.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
